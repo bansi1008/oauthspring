@@ -24,7 +24,7 @@ public class Test {
     public String adminInfo() {
         return "Hello, Admin!";
     }
-    @GetMapping("/user")
+    @GetMapping("/user")   
     public String user() {
         return "Hello, User!";
     }

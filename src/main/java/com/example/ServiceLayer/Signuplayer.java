@@ -30,7 +30,7 @@ public class Signuplayer {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public String  signuplayerr(Signupdto signupdto) {
+    public String signuplayerr(Signupdto signupdto) {
 
         
          userRepository.findByEmail(signupdto.getEmail()).ifPresent(user -> {
@@ -56,7 +56,7 @@ userRepository.save(s);
         
         
 }
-   public String loginplayerr(Logindto logindto) {
+   public String loginlayerr(Logindto logindto) {
    Signup ex= userRepository.findByEmail(logindto.getEmail())
         .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
     

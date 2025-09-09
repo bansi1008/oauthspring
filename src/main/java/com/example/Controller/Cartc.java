@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
 
 import com.example.DTO.Cartdto;
 
@@ -14,10 +15,10 @@ public class Cartc {
     @Autowired
     private Cartlayer Cartlayer;
 @PostMapping("/addtocart")
-public String addtocart(@RequestBody Cartdto cartdto){
-    System.out.println("Received cartdto: " + cartdto);
+public String addtocart(@RequestBody Cartdto cartdto, Authentication authentication){
+    Long userId = Long.valueOf(authentication.getPrincipal().toString());
 
-    Cartlayer.addtocart(cartdto);
+    Cartlayer.addtocart(cartdto,userId);
     return "item added to cart";
     
 }

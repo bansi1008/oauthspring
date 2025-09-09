@@ -44,15 +44,14 @@ public class Jwtfilter extends OncePerRequestFilter {
                         .parseClaimsJws(token)
                         .getBody();
 
-                String email = claims.getSubject();
-                String name = claims.get("name", String.class);
                String role = claims.get("roles", String.class);
+               String userid = claims.getSubject(); 
                if(role == null) role = "USER";
 
                 Collection<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_"+role));
 
                 UsernamePasswordAuthenticationToken authToken =
-                        new UsernamePasswordAuthenticationToken(email, null, authorities);
+                        new UsernamePasswordAuthenticationToken(userid, null, authorities);
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             } catch (Exception e) {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

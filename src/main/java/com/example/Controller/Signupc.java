@@ -43,7 +43,7 @@ public class Signupc {
     }
     @PostMapping("/login")
     public String login(@RequestBody Logindto logindto,HttpServletResponse response) {
-      String token=  signuplayer.loginplayerr(logindto);
+      String token=  signuplayer.loginlayerr(logindto);
       Cookie cookie = new Cookie("learning_token", token);
         cookie.setHttpOnly(true);
         cookie.setPath("/");

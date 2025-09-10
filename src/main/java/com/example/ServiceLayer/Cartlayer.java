@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,8 +26,8 @@ public class Cartlayer {
     private Productrepo Productrepo;
 
 
-   public void addtocart(Cartdto cartdto) {
-    Signup user = Signup.builder().id(cartdto.getUserId()).build();
+   public void addtocart(Cartdto cartdto, Long userId) {
+    Signup user = Signup.builder().id(userId).build();
     Product product = Product.builder().id(cartdto.getProductId()).build();
 
     Cart cart = Cart.builder()
